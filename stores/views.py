@@ -20,3 +20,6 @@ def index(request):
     data['categories'] = categories
     # print(products)
     return render(request, 'index.html', data)
+
+def signup(request):
+    return render(request, 'signup.html')
