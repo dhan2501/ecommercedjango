@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
-
+# encoding password... libary import
+from django.contrib.auth.hashers import make_password, check_password
 from .models.products import Product
 from .models.category import Category
 from .models.customer import Customer
@@ -77,7 +78,8 @@ def signup(request):
         #saving data
 
         if not error_message:
-            print(first_name, last_name, email, password, phone)
+            # print(first_name, last_name, email, password, phone)
+            customer.password = make_password(customer.password)
             customer.register()
             return redirect('homepage')
         else:
