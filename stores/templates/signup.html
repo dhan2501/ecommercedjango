@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+      <!-- body start -->
+{% block content %}
+<div class="container">
+      <div class="p-4 m-4">
+            <div class="col-lg-5 mx-auto border rounded pt-4">
+                  <h3 class="alert alert-light border rounded text-center">Create Account </h3>
+                  <form action="/signup" method="POST">
+                        {% csrf_token %}
+                        <!-- Validation error message -->
+                        {% if error %}
+                        <div class="alert alert-danger" role="alert">
+                              {{error}}      
+                        </div>
+                        {% endif %}
+                        <div class="form-group">
+                              <label for="">First Name</label>
+                              <input type="text" class="form-control form-control-sm" name="fname" id="" value="{{values.first_name}}" placeholder="eg.micel">
+                        </div>
+                        <div class="form-group">
+                              <label for="">Last Name</label>
+                              <input type="text" class="form-control form-control-sm" name="lname" id="" value="{{values.last_name}}" placeholder="eg.surname">
+                        </div>
+                        <div class="form-group">
+                              <label for="">Email address</label>
+                              <input type="email" class="form-control" name="email" id="" value="{{values.email}}" placeholder="eg.email@example.com" >
+                        </div>
+                        <div class="form-group">
+                              <label for="">Password</label>
+                              <input type="password" class="form-control form-control-sm" name="password" id="" placeholder="*********">
+                        </div>
+                        
+                        <div class="form-group">
+                              <label for="">Phone Number</label>
+                              <input type="tel" class="form-control form-control-sm" name="phone" id="" value="{{values.phone}}" placeholder="9999999999">
+                        </div>
+                        <div class="form-group">
+                              <input type="submit" class="btn btn-sm btn-info" value="Create Account">
+                        </div>
+                  </form>
+            </div>
+      </div>
+</div>
+
+{% endblock %}
