@@ -5,7 +5,7 @@ from django.urls import path
 # from .views import home, signup, login  #Method 1 code
 
 # Using method 2
-from .views.home import index
+from .views.home import Index
 from .views.signup import Signup
 from .views.login import Login
 
@@ -19,7 +19,8 @@ from .views.login import Login
 
 # Method 2:
 urlpatterns = [
-    path('', index, name="homepage"),
+    # path('', index, name="homepage"),
+    path('', Index.as_view(), name="homepage"),
     path('signup', Signup.as_view()),
     path('login', Login.as_view())
 ]
