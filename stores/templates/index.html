@@ -1,6 +1,7 @@
 {% extends "base.html" %}
       <!-- body start -->
 {% block content %}
+{% load cart %}
       <div id="carouselExampleControls" class="carousel slide  mb-3" data-ride="carousel">
         <div class="carousel-inner banner-img ">
           <div class="carousel-item active">
@@ -50,6 +51,7 @@
             <div class="card-body">
               <h5 class="card-title">{{product.name}}</h5>
               <p class="card-text">{{product.price}}</p>
+              {{ product | is_in_cart:request.session.cart }}
               <form action="" method="POST">
                 {% csrf_token %}
                 <input hidden type="text" name="product" value="{{product.id}}">
